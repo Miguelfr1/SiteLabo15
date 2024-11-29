@@ -148,6 +148,7 @@ if (isset($_POST['nomAdmin']) && !empty($_POST['nomAdmin'])) {
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+$date_formatee = date('d-m-Y', strtotime($date_rdv));
 
 // Inclure les fichiers PHPMailer avec des chemins relatifs
 require '../phpmailer/vendor/phpmailer/phpmailer/src/Exception.php';
@@ -205,7 +206,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Contenu de l'email pour le patient
                     $mail->isHTML(false);  
                     $mail->Subject = "Confirmation de votre rendez-vous";
-                    $mail->Body    = "Bonjour $prenom $nom,\n\nVotre rendez-vous a été confirmé !\nDétails :\nLaboratoire : $laboratoire\nDate : $date_rdv\nHeure : $heure_rdv\n\nMerci de votre confiance.\nCordialement,\nL'équipe de Labo XV";
+                    $mail->Body    = "Bonjour $prenom $nom,\n\nVotre rendez-vous a été confirmé !\n \nLaboratoire : $laboratoire\n$date_formatee\nHeure : $heure_rdv \n\nPensez a vous munir de votre ordonnance, carte vitale et carte mutuelle. \nMerci de votre confiance.\nDr Awaida";
             
                     // Envoyer l'email au patient
                     $mail->send();
@@ -215,11 +216,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->clearAddresses();
                     
                     // Ajouter l'adresse de Dr. Awaida
-                    $mail->addAddress('dr.awaida@laboxv.com', 'Dr. Awaida');
-            
+                    $mail->addAddress('rdv@laboxv.com', 'Dr. Awaida');
+
                     // Contenu de l'email pour le patron
-                    $mail->Subject = "Nouvelle réservation de rendez-vous";
-                    $mail->Body    = "Bonjour Dr. Awaida,\n\nUne nouvelle réservation de rendez-vous a été effectuée.\n\nDétails du patient :\nPrénom : $prenom\nNom : $nom\nEmail : $email\nTéléphone : $telephone\n\nLaboratoire : $laboratoire\nDate : $date_rdv\nHeure : $heure_rdv\n\nCordialement,\nL'équipe de Labo XV";
+                    $mail->Subject = "RdV";
+                    $mail->Body    = "Laboratoire : $laboratoire \n$date_formatee\n$heure_rdv\n\nNom : $nom \nPrénom : $prenom\nEmail : $email\nTéléphone : $telephone";
             
                     // Envoyer l'email à Dr. Awaida
                     $mail->send();
