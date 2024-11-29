@@ -47,14 +47,22 @@ body, html {
         ul {
             list-style-type: none;
             padding: 0;
+
         }
 
         ul li {
             font-size: 1.1rem;
-            margin: 8px 0;
+            margin: 15px;
             padding-left: 1em;
             position: relative;
+            line-height: 1.1; /* Réduit l'espacement entre les lignes du même <li> */
+                
+            word-wrap: break-word; /* Permet de gérer les longues chaînes de texte */
+
+
         }
+
+       
 
         ul li::before {
             content: "•";
@@ -94,27 +102,10 @@ body, html {
             padding: 0;
         }
 
-        ul li {
-            font-size: 1.1rem;
-            margin: 8px 0;
-            padding-left: 1em;
-            position: relative;
-        }
+       
 
-        ul li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #007BFF;
-        }
-
-        .section-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #e74c3c;
-            margin-top: 20px;
-        }
-
+      
+     
         @media (max-width: 768px) {
             .analyses-section {
                 flex-direction: column;
@@ -151,7 +142,7 @@ body, html {
 
     <!-- Contenu principal -->
     <div class="container">
-        <h1>Liste des analyses nécessitant d'être à jeun</h1>
+        <h1>Liste exhaustive des analyses nécessitant d'être à jeun</h1>
 
         <p class="note">
             Les paramètres suivants nécessitent un <strong>JEUNE COMPLET DE 12 HEURES</strong>.
@@ -165,9 +156,7 @@ body, html {
                 <h2>Analyses fréquentes :</h2>
                 <ul>
                     <li>GLYCÉMIE</li>
-                    <li>BILAN LIPIDIQUE (E.A.L) : Cholestérol, Triglycérides</li>
-                    <li>HDL, LDL</li>
-                    <li>APO A1, APO B</li>
+                    <li>BILAN LIPIDIQUE : Cholestérol, Triglycérides, HDL, LDL,APO A1, APO B</li>
                     <li>INSULINE</li>
                     <li>PROLACTINE</li>
                 </ul>
@@ -185,6 +174,7 @@ body, html {
                 <ul>
                     <li>CROSSLAPS Sanguins (venir avant 9h)</li>
                     <li>CROSSLAPS Urinaires</li>
+                    <li>NTX Urinaires</li>
                     <li>HOMOCYSTÉINE</li>
                     <li>TESTOSTÉRONE BIODISPONIBLE</li>
                     <li>GH</li>
@@ -193,7 +183,6 @@ body, html {
                     <li>GASTRINE</li>
                     <li>CATÉCHOLAMINES Sanguins</li>
                     <li>CATÉCHOLAMINES Urinaires</li>
-                    <li>NTX Urinaires</li>
                 </ul>
             </div>
         </div>
